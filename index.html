@@ -5,19 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mauvi.de Space</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <!-- FontAwesome für die Social-Media-Icons auf den Knöpfen -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ANMERKUNG: Die Knöpfe ganz oben, um die Sprache manuell umzuschalten -->
     <div class="language-switch">
         <button onclick="switchLang('de')">DE</button>
         <button onclick="switchLang('en')">EN</button>
     </div>
 
-    <!-- ANMERKUNG: Der große, rote Retro-Kopfbereich (Header) mit deinem Minecraft Skin -->
     <header class="retro-header">
         <img src="https://skin.laby.net/api/render/user/febc1134-94fe-4417-a381-37f55efddb34.png?shadow=true&width=150" class="skin-logo" alt="Mauvi020 Skin">
         <h1>Mauvi020</h1>
@@ -25,12 +22,8 @@
         <p class="subtitle lang-en" style="display:none;">Welcome to my retro space</p>
     </header>
 
-    <!-- ANMERKUNG: Der Haupt-Container, der die 3 Spalten dank Flexbox nebeneinander hält -->
     <main class="main-container">
 
-        <!-- ==========================================
-             SPALTE 1 (LINKS): Deine echten Social-Links
-             ========================================== -->
         <section class="column left-column">
             <h2 class="lang-de">Links</h2>
             <h2 class="lang-en" style="display:none;">Links</h2>
@@ -45,9 +38,6 @@
             </ul>
         </section>
 
-        <!-- ==========================================
-             SPALTE 2 (MITTE): Blog / News Bereich
-             ========================================== -->
         <section class="column center-column">
             <h2 class="lang-de">Beiträge</h2>
             <h2 class="lang-en" style="display:none;">Posts</h2>
@@ -59,14 +49,10 @@
             </article>
         </section>
 
-        <!-- ==========================================
-             SPALTE 3 (RECHTS): MC-Server & dein echtes Spotify
-             ========================================== -->
         <section class="column right-column">
             <h2 class="lang-de">Status</h2>
             <h2 class="lang-en" style="display:none;">Status</h2>
             
-            <!-- Live Minecraft Server Status Box -->
             <div class="status-box">
                 <h3>mauvi.de</h3>
                 <div id="mc-status">
@@ -74,7 +60,6 @@
                 </div>
             </div>
             
-            <!-- Dein Live Spotify Kasten -->
             <div class="status-box">
                 <h3 class="lang-de">Live Musik</h3>
                 <h3 class="lang-en" style="display:none;">Now Playing</h3>
@@ -84,7 +69,6 @@
                 </a>
             </div>
 
-            <!-- Deine Top Künstler -->
             <div class="status-box">
                 <h3 style="font-size: 14px;">Top Künstler</h3>
                 <div class="artist-grid">
@@ -106,7 +90,6 @@
 
     </main>
 
-    <!-- ANMERKUNG: Dein Retro-Footer direkt unter dem main-Bereich -->
     <footer id="footer">
         <img src="https://raw.githubusercontent.com/Mauvi020/Mauvi.Downloads-/refs/heads/main/2image.png" alt="Logo" class="footer-logo">
         <p><strong>PixoStudio</strong></p>
@@ -115,9 +98,6 @@
         <p><a href="datenschutz.html" class="footer-privacy">Privacy Policy</a></p>
     </footer>
 
-    <!-- ==========================================
-         JAVASCRIPT (Das Gehirn der Seite im Hintergrund)
-         ========================================== -->
     <script>
         // 1. Funktion: Minecraft API Abfrage für mauvi.de
         async function checkMinecraftServer() {
