@@ -11,13 +11,13 @@
 </head>
 <body>
 
-    <!-- Sprach-Umschalter -->
+    <!-- ANMERKUNG: Die Knöpfe ganz oben, um die Sprache manuell umzuschalten -->
     <div class="language-switch">
         <button onclick="switchLang('de')">DE</button>
         <button onclick="switchLang('en')">EN</button>
     </div>
 
-    <!-- Großer Retro-Kopfbereich mit deinem Minecraft Skin -->
+    <!-- ANMERKUNG: Der große, rote Retro-Kopfbereich (Header) mit deinem Minecraft Skin -->
     <header class="retro-header">
         <img src="https://skin.laby.net/api/render/user/febc1134-94fe-4417-a381-37f55efddb34.png?shadow=true&width=150" class="skin-logo" alt="Mauvi020 Skin">
         <h1>Mauvi020</h1>
@@ -25,10 +25,12 @@
         <p class="subtitle lang-en" style="display:none;">Welcome to my retro space</p>
     </header>
 
-    <!-- Haupt-Layout mit den 3 Spalten -->
+    <!-- ANMERKUNG: Der Haupt-Container, der die 3 Spalten dank Flexbox nebeneinander hält -->
     <main class="main-container">
 
-        <!-- SPALTE 1 (LINKS): Deine echten Social-Links -->
+        <!-- ==========================================
+             SPALTE 1 (LINKS): Deine echten Social-Links
+             ========================================== -->
         <section class="column left-column">
             <h2 class="lang-de">Links</h2>
             <h2 class="lang-en" style="display:none;">Links</h2>
@@ -43,7 +45,9 @@
             </ul>
         </section>
 
-        <!-- SPALTE 2 (MITTE): Blog / News Bereich -->
+        <!-- ==========================================
+             SPALTE 2 (MITTE): Blog / News Bereich
+             ========================================== -->
         <section class="column center-column">
             <h2 class="lang-de">Beiträge</h2>
             <h2 class="lang-en" style="display:none;">Posts</h2>
@@ -55,12 +59,14 @@
             </article>
         </section>
 
-        <!-- SPALTE 3 (RECHTS): MC-Server & dein echtes Spotify -->
+        <!-- ==========================================
+             SPALTE 3 (RECHTS): MC-Server & dein echtes Spotify
+             ========================================== -->
         <section class="column right-column">
             <h2 class="lang-de">Status</h2>
             <h2 class="lang-en" style="display:none;">Status</h2>
             
-            <!-- Live Minecraft Server Status -->
+            <!-- Live Minecraft Server Status Box -->
             <div class="status-box">
                 <h3>mauvi.de</h3>
                 <div id="mc-status">
@@ -100,8 +106,20 @@
 
     </main>
 
+    <!-- ANMERKUNG: Dein Retro-Footer direkt unter dem main-Bereich -->
+    <footer id="footer">
+        <img src="https://raw.githubusercontent.com/Mauvi020/Mauvi.Downloads-/refs/heads/main/2image.png" alt="Logo" class="footer-logo">
+        <p><strong>PixoStudio</strong></p>
+        <p class="small">Made By: Mauvi020 | ©2026 PixoStudio</p> 
+        <p class="small">info.mauvi.de | support.mauvi@gmail.com</p>
+        <p><a href="datenschutz.html" class="footer-privacy">Privacy Policy</a></p>
+    </footer>
+
+    <!-- ==========================================
+         JAVASCRIPT (Das Gehirn der Seite im Hintergrund)
+         ========================================== -->
     <script>
-        // Minecraft API Abfrage
+        // 1. Funktion: Minecraft API Abfrage für mauvi.de
         async function checkMinecraftServer() {
             try {
                 const response = await fetch('https://api.mcsrvstat.us/2/mauvi.de');
@@ -121,7 +139,7 @@
             }
         }
 
-        // Sprachsteuerung
+        // 2. Funktion: Blendet deutsche oder englische Texte ein/aus
         function switchLang(lang) {
             const deElements = document.querySelectorAll('.lang-de');
             const enElements = document.querySelectorAll('.lang-en');
@@ -137,17 +155,22 @@
             }
         }
 
-        // Automatischer Spotify Live-Bild Updater (Alle 15 Sekunden)
+        // 3. Funktion: Automatischer Spotify Live-Bild Updater (Alle 15 Sekunden)
         function refreshSpotify() {
             const img = document.getElementById('spotify-live');
             const url = "https://now-play.vercel.app/api/generate?uid=d8e7820b-dd53-49fd-9736-3b57b40516d4&theme=dark";
             img.src = url + "&v=" + new Date().getTime();
         }
 
-        // Initialsierung beim Laden
+        // 4. Funktion: Prüft beim Start die Sprache deines Browsers
         const userLanguage = navigator.language || navigator.userLanguage;
-        if (userLanguage.startsWith('de')) { switchLang('de'); } else { switchLang('en'); }
+        if (userLanguage.startsWith('de')) { 
+            switchLang('de'); 
+        } else { 
+            switchLang('en'); 
+        }
         
+        // Führt die Checks direkt aus und startet die Timer
         checkMinecraftServer();
         setInterval(refreshSpotify, 15000);
     </script>
