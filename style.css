@@ -102,7 +102,7 @@ h1, h2, h3 {
 .status-box, .blog-post {
     background: #2b1b1b;       /* Sehr dunkles Rot/Braun für das Innere der Inhaltsboxen */
     border: 3px inset #5e1e1e; /* Erzeugt den typischen "eingedrückten" Retro-Look */
-    padding: 20px;             /* Schön viel Platz im Inneren der Boxen */
+    padding: 20px;             /* Schön viel Platz im Inneren des Boxen */
     margin-bottom: 20px;       /* Abstand zur nächsten Box darunter */
     color: #ffeb7a;            /* Etwas helleres Gelb/Gold für bessere Lesbarkeit in den Boxen */
 }
