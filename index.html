@@ -3,16 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Info.Mauvi</title>
+    <title>Mauvi.de Space</title>
     
+    <!-- Hier wird dein kleines Tab-Icon (Favicon) geladen -->
     <link rel="icon" type="image/png" href="favicon.png">
     
+    <!-- Hier verbinden wir die HTML-Datei mit deiner style.css Datei -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>Willkommen auf meiner Retro-Seite!</h1>
-    <p>Hier entsteht gerade etwas Großes...</p>
+    <!-- ANMERKUNG: Die Knöpfe ganz oben, um die Sprache manuell umzuschalten -->
+    <div class="language-switch">
+        <button onclick="switchLang('de')">DE</button>
+        <button onclick="switchLang('en')">EN</button>
+    </div>
 
+    <!-- ANMERKUNG: Der große, rote Retro-Kopfbereich (Header) mit dem Titel -->
+    <header class="retro-header">
+        <h1>Retronator</h1>
+        <!-- Wenn der Browser auf Deutsch steht, wird das hier angezeigt -->
+        <p class="subtitle lang-de">Deine Pixel-Art und Gaming Zentrale</p>
+        <!-- Wenn der Browser auf Englisch steht, wird das hier angezeigt (am Anfang versteckt) -->
+        <p class="subtitle lang-en" style="display:none;">Daily pixel art and gaming news</p>
+    </header>
+
+    <!-- ANMERKUNG: Der Haupt-Container. Er sorgt dank Flexbox dafür, dass die 3 Spalten nebeneinander stehen -->
+    <main class="main-container">
+
+        <!-- ==========================================
+             SPALTE 1 (LINKS): Navigation & Links
+             ========================================== -->
+        <section class="column left-column">
+            <h2 class="lang-de">Navigation</h2>
+            <h2 class="lang-en" style="display:none;">Navigation</h2>
+            
+            <!-- Die Liste für deine Linktree-Knöpfe -->
+            <ul class="link-list">
+                <li><a href="#">Discord Server</a></li>
+                <li><a href="#">YouTube Kanal</a></li>
+            </ul>
+        </section>
+
+        <!-- ==========================================
+             SPALTE 2 (MITTE): Dein Blogbereich für Posts
+             ========================================== -->
+        <section class="column center-column">
+            <h2 class="lang-de">Beiträge</h2>
+            <h2 class="lang-en" style="display:none;">Posts</h2>
+            
+            <!-- Ein einzelner Blog-Beitrag im dunklen Kasten -->
+            <article class="blog-post">
+                <h3>Golden Horn</h3>
+                <p class="lang-de">Willkommen auf meiner neuen Retro-Webseite!</p>
+                <p class="lang-en" style="display:none;">Welcome to my new retro website!</p>
+            </article>
+        </section>
+
+        <!-- ==========================================
+             SPALTE 3 (RECHTS): Minecraft & Spotify Widgets
+             ========================================== -->
+        <section class="column right-column">
+            <h2 class="lang-de">Status & Musik</h2>
+            <h2 class="lang-en" style="display:none;">Status & Music</h2>
+            
+            <!-- Die Kiste, in der gleich der Live-Status von mauvi.de landet -->
+            <div class="status-box">
+                <h3>MC Server</h3>
+                <div id="mc-status">
+                    <p>Lade Status...</p>
+                </div>
+            </div>
+            
+            <!-- Die Kiste, in der wir als nächstes Spotify einbauen -->
+            <div class="status-box">
+                <h3>Now Playing</h3>
+                <p>Spotify Widget kommt gleich...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================
+         JAVASCRIPT (Das Gehirn der Seite im Hintergrund)
+         ========================================== -->
+    <script>
+        // 1. Funktion: Holt sich die echten Server-Daten für mauvi.de von einer API
+        async function checkMinecraftServer() {
+            try {
+                const response = await fetch('https://api.mcsrvstat.us/2/mauvi.de');
+                const data = await response.json();
+                const statusDiv = document.getElementById('mc-status');
+                
+                // Wenn der Server online ist, baue den grünen Text und die Spielerzahlen ein
+                if (data.online) {
+                    statusDiv.innerHTML = `
+                        <p style="color: #2ed573; font-weight: bold; margin: 5px 0;">● ONLINE</p>
+                        <p style="font-size: 14px; margin: 5px 0;">Spieler: ${data.players.online}/${data.players.max}</p>
+                    `;
+                } else {
+                    // Wenn der Server offline ist, zeige ein rotes OFFLINE
+                    statusDiv.innerHTML = `<p style="color: #ff4757; font-weight: bold;">● OFFLINE</p>`;
+                }
+            } catch (error) {
+                // Falls die API mal down ist, zeige eine Fehlermeldung
+                document.getElementById('mc-status').innerHTML = '<p>Fehler beim Laden</p>';
+            }
+        }
+
+        // 2. Funktion: Blendet die deutschen oder englischen Texte ein/aus
+        function switchLang(lang) {
+            const deElements = document.querySelectorAll('.lang-de');
+            const enElements = document.querySelectorAll('.lang-en');
+            
+            if (lang === 'de') {
+                // Zeige alle deutschen Elemente, verstecke die englischen
+                deElements.forEach(el => el.style.display = 'block');
+                enElements.forEach(el => el.style.display = 'none');
+                document.documentElement.lang = 'de';
+            } else {
+                // Verstecke alle deutschen Elemente, zeige die englischen
+                deElements.forEach(el => el.style.display = 'none');
+                enElements.forEach(el => el.style.display = 'block');
+                document.documentElement.lang = 'en';
+            }
+        }
+
+        // 3. Funktion: Prüft beim allerersten Start die Sprache deines Browsers
+        const userLanguage = navigator.language || navigator.userLanguage;
+        if (userLanguage.startsWith('de')) {
+            switchLang('de'); // Browser ist deutsch -> Zeige Deutsch
+        } else {
+            switchLang('en'); // Browser ist anders -> Zeige Englisch
+        }
+
+        // Aktiviert den Minecraft-Status-Check sofort, wenn man die Seite öffnet
+        checkMinecraftServer();
+    </script>
 </body>
 </html>
