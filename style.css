@@ -1,115 +1,131 @@
+/* ==========================================================================
+   1. GLOBAL STYLES (Hintergrund und Schriften für die gesamte Seite)
+   ========================================================================== */
 body {
-    background-color: #1a1515;
-    color: #ffd700;
-    font-family: 'Courier New', Courier, monospace;
+    background-color: #1a1515; /* Ein sehr dunkles Retro-Braun/Rot für den Seitenhintergrund */
+    color: #ffd700;            /* Gold-Gelb als Haupt-Schriftfarbe */
+    font-family: 'Courier New', Courier, monospace; /* Typische, breite Retro-Schrift */
     margin: 0;
-    padding: 40px 20px;
+    padding: 40px 20px;        /* Mehr Abstand nach oben und unten, damit es nicht gequetscht wirkt */
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center;       /* Zentriert alle Hauptkästen in der Mitte des Bildschirms */
 }
 
+/* Überschriften bekommen ein dunkles Braun */
 h1, h2, h3 {
-    color: #5c3a21;
+    color: #5c3a21;            /* Klassisches Retro-Dunkelbraun */
     margin-top: 0;
 }
 
 /* Der Skin-Kopf oben im Header */
 .skin-logo {
     width: 80px;
-    image-rendering: pixelated; /* Verhindert Weichzeichner bei Pixel-Art */
+    image-rendering: pixelated; /* Verhindert Weichzeichner bei Pixel-Art-Grafiken */
     margin-bottom: 10px;
 }
 
-/* Sprachschalter */
+/* ==========================================================================
+   2. SPRACHKNÖPFE (Das Menü ganz oben)
+   ========================================================================== */
 .language-switch {
-    margin-bottom: 25px;
+    margin-bottom: 25px;       /* Großzügiger Abstand nach unten zum Header */
     display: flex;
-    gap: 15px;
+    gap: 15px;                 /* Abstand zwischen den beiden Knöpfen */
 }
 
 .language-switch button {
-    background-color: #a34343;
-    border: 3px solid #d96e6e;
-    border-bottom: 3px solid #521f1f;
-    border-right: 3px solid #521f1f;
-    color: #ffd700;
-    padding: 8px 20px;
+    background-color: #a34343; /* Leichtes Retro-Rot für die Knöpfe */
+    border: 3px solid #d96e6e; /* Helle Kante oben/links für 3D-Effekt */
+    border-bottom: 3px solid #521f1f; /* Dunkle Kante unten/rechts für 3D-Effekt */
+    color: #ffd700;            /* Goldene Schrift auf dem Knopf */
+    padding: 8px 20px;         /* Mehr Platz im Inneren des Knopfs */
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 3px 3px 0px #000000;
+    box-shadow: 3px 3px 0px #000000; /* Harter Retro-Schatten */
 }
 
+/* Wenn man auf den Knopf draufdrückt, dreht sich der 3D-Effekt um */
 .language-switch button:active {
     border: 3px solid #521f1f;
     border-bottom: 3px solid #d96e6e;
     border-right: 3px solid #d96e6e;
 }
 
-/* Header Box */
+/* ==========================================================================
+   3. RETRO HEADER (Der große Kasten ganz oben)
+   ========================================================================== */
 .retro-header {
-    background-color: #ba4a4a;
-    border: 4px solid #e67373;
+    background-color: #ba4a4a; /* Leichtes Retro-Rot als Kastenfarbe */
+    border: 4px solid #e67373; /* Dicke 3D-Borders */
     border-bottom: 4px solid #5e1e1e;
     border-right: 4px solid #5e1e1e;
     width: 90%;
     max-width: 1200px;
     text-align: center;
-    padding: 25px;
-    margin-bottom: 35px;
+    padding: 25px;             /* Viel Platz im Kasten, damit der Text atmen kann */
+    margin-bottom: 35px;       /* Ordentlich Abstand nach unten zu den 3 Spalten */
     box-shadow: 4px 4px 0px #000000;
 }
 
-/* Grid Layout */
+/* ==========================================================================
+   4. DAS 3-SPALTEN-LAYOUT (Flexbox)
+   ========================================================================== */
 .main-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: row;       /* Legt die 3 Spalten nebeneinander */
     width: 90%;
     max-width: 1200px;
-    gap: 25px;
-    align-items: flex-start;
+    gap: 25px;                 /* Viel Platz und Abstand ZWISCHEN den Spalten */
+    align-items: flex-start;   /* Verhindert, dass sich Boxen ungewollt in die Länge ziehen */
 }
 
+/* Das Design für alle 3 großen Spalten-Kästen */
 .column {
-    background-color: #ba4a4a;
+    background-color: #ba4a4a; /* Das gleiche leichte Retro-Rot */
     border: 4px solid #e67373;
     border-bottom: 4px solid #5e1e1e;
     border-right: 4px solid #5e1e1e;
-    padding: 25px;
+    padding: 25px;             /* Breiteres Padding, damit der Inhalt nicht am Rand klebt */
     box-shadow: 4px 4px 0px #000000;
 }
 
+/* Größenaufteilung: Links schmal, Mitte breit, Rechts schmal */
 .left-column { flex: 1; }
-.center-column { flex: 2; }
+.center-column { flex: 2; } /* Der Blog in der Mitte bekommt doppelt so viel Platz */
 .right-column { flex: 1; }
 
-/* Kisten-Inhalte */
+/* ==========================================================================
+   5. DIE INNEREN WIDGET-BOXEN (Für Blogbeiträge, Spotify, MC-Status)
+   ========================================================================== */
 .status-box, .blog-post {
-    background: #2b1b1b;
-    border: 3px inset #5e1e1e;
-    padding: 20px;
-    margin-bottom: 20px;
-    color: #ffeb7a;
+    background: #2b1b1b;       /* Sehr dunkles Rot/Braun für das Innere der Inhaltsboxen */
+    border: 3px inset #5e1e1e; /* Erzeugt den typischen "eingedrückten" Retro-Look */
+    padding: 20px;             /* Schön viel Platz im Inneren der Boxen */
+    margin-bottom: 20px;       /* Abstand zur nächsten Box darunter */
+    color: #ffeb7a;            /* Etwas helleres Gelb/Gold für bessere Lesbarkeit in den Boxen */
 }
 
-/* Linktree Buttons links */
+/* ==========================================================================
+   6. LINKS & NAVIGATION (Linktree Buttons links)
+   ========================================================================== */
 .link-list {
-    list-style: none;
+    list-style: none;          /* Entfernt die Standard-Punkte vor der Liste */
     padding: 0;
     margin: 0;
 }
 
 .link-list li {
-    margin-bottom: 15px;
+    margin-bottom: 15px;       /* Abstand zwischen den einzelnen Links */
 }
 
 .link-list a {
-    color: #ffd700;
+    color: #ffd700;            /* Goldene Links */
     text-decoration: none;
     font-weight: bold;
-    display: block;
-    background: #4a2323;
+    display: block;            /* Macht den Link zu einem klickbaren Balken */
+    background: #4a2323;       /* Dunkelroter Hintergrund für den Link-Knopf */
     padding: 12px;
     border: 3px solid #e67373;
     border-bottom: 3px solid #2b1b1b;
@@ -117,9 +133,10 @@ h1, h2, h3 {
     text-align: left;
 }
 
+/* Effekt, wenn man mit der Maus über einen Link fährt (Hover) */
 .link-list a:hover {
-    background: #ffd700;
-    color: #4a2323;
+    background: #ffd700;       /* Hintergrund wird Gold */
+    color: #4a2323;            /* Schrift wird Dunkelrot (Invertiert-Effekt) */
     border-color: #ffffff;
 }
 
@@ -132,7 +149,9 @@ h1, h2, h3 {
     margin-top: 5px;
 }
 
-/* Raster für Top Künstler */
+/* ==========================================================================
+   7. RASTER FÜR TOP KÜNSTLER (Rechte Spalte)
+   ========================================================================== */
 .artist-grid {
     display: flex;
     flex-direction: column;
@@ -159,4 +178,54 @@ h1, h2, h3 {
     width: 40px;
     height: 40px;
     border: 1px solid #ffd700;
+}
+
+/* ==========================================================================
+   8. RETRO FOOTER DESIGN
+   ========================================================================== */
+#footer {
+    background-color: #ba4a4a; /* Das gleiche leichte Retro-Rot wie deine Spalten */
+    border: 4px solid #e67373; /* Fette Retro-3D-Kanten */
+    border-bottom: 4px solid #5e1e1e;
+    border-right: 4px solid #5e1e1e;
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 35px;          /* Abstand nach oben zu den Spalten */
+    padding: 20px;             /* Genug Platz im Inneren des Kastens */
+    text-align: center;        /* Zentriert den Text und das Logo */
+    box-shadow: 4px 4px 0px #000000; /* Harter Retro-Schatten */
+    color: #ffeb7a;            /* Gelbliche Schrift für gute Lesbarkeit */
+}
+
+/* Das Logo im Footer schön pixelig machen */
+.footer-logo {
+    width: 60px;
+    height: auto;
+    image-rendering: pixelated; 
+    margin-bottom: 10px;
+}
+
+/* Text-Größen im Kasten */
+#footer p {
+    margin: 5px 0;
+}
+
+#footer .small {
+    font-size: 13px;
+    color: #ffd700; /* Goldene Farbe für die kleineren Details */
+}
+
+/* Der Privacy Policy Link */
+.footer-privacy {
+    color: #ffd700 !important;
+    text-decoration: underline !important;
+    background: none !important; /* Entfernt den Button-Hintergrund */
+    border: none !important;
+    padding: 0 !important;
+    display: inline !important;
+}
+
+.footer-privacy:hover {
+    color: #ffffff !important;
+    background: none !important;
 }
